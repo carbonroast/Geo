@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4922034558376530296}
-  - component: {fileID: 1041907988411902895}
   - component: {fileID: 1652683162017083767}
+  - component: {fileID: 6585699580696449323}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -32,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1041907988411902895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705635123210391373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3d9e9cf8ec5db4ab452a35c6ef526d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
-  facing_direction: {x: 0, y: 0, z: 0, w: 0}
 --- !u!120 &1652683162017083767
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -141,3 +127,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &6585699580696449323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705635123210391373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a0ef8efe52ad84f85a95c32861e8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  line_render: {fileID: 1652683162017083767}

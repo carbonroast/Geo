@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: 705635123210391373, guid: c652b1d007b76d342acadc78ce4b7b93, type: 3}
   velo: {x: 0, y: 0, z: 0}

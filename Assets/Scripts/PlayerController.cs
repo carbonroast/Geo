@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public GameObject weapon;
     public Vector3 velo;
-    
     private Rigidbody body;
     private Vector3 inputs;
 
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot()
     {
         GameObject _go = Instantiate(weapon);
-        Laser _weapon = _go.GetComponent<Laser>();
+        BasicLaser _weapon = _go.GetComponent<BasicLaser>();
         _weapon.position = body.position;
         _weapon.rotation = this.transform.rotation;
     }

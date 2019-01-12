@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser  : MonoBehaviour
+public class Laser  : Weapon
 {
     public Vector3 position;
     public Quaternion rotation;
     public LineRenderer line_render;
 
 
-    public virtual void Start()
+    public override void Start()
     {
+        base.Start();
         LineRender();
         SetRotation();
 
@@ -28,14 +29,11 @@ public class Laser  : MonoBehaviour
         line_render.material.color = Color.red;
     }
     
-    public virtual void Destroy(float time)
+    public override void Destroy(float time)
     {
         GameObject.Destroy(line_render, time);
         GameObject.Destroy(this.gameObject, time);
     }
 
-    public virtual void Damage()
-    {
 
-    }
 }

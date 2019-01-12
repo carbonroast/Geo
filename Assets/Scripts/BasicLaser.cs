@@ -48,7 +48,6 @@ public class BasicLaser : Laser
             }
         }
 
-
         array_counter += 1;
         ray_positions.Add(position + (facing_direction.normalized * 5.0f));
         // SetPositions requires a array 
@@ -59,8 +58,5 @@ public class BasicLaser : Laser
         }
         line_render.positionCount = _positions.Length;
         line_render.SetPositions(_positions);
-
-
-
     }
 }

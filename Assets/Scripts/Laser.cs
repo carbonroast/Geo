@@ -24,7 +24,7 @@ public class Laser  : Weapon
     public virtual void LineRender()
     {
         line_render = GetComponent<LineRenderer>();
-        line_render.startWidth = 0.04f;
+        line_render.startWidth = 0.01f;
         line_render.endWidth = 0.04f;
         line_render.material.color = Color.red;
     }

@@ -20,7 +20,7 @@ public class BasicLaser : Laser
         ray_positions.Add(position);
         hit_wall = true;
         bounce_limit = 5;
-        Destroy(3.0f);
+        Destroy(.5f);
     }
 
     // Update is called once per frame

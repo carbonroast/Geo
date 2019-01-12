@@ -28,26 +28,33 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            Shoot();
+            Ray _ray = MoveCursor();
+            Shoot(_ray);
         }
 
     }
 
     private void FixedUpdate()
     {
-        body.velocity = inputs * speed;
-        if(body.velocity != Vector3.zero)
-        {
-            this.transform.rotation = Quaternion.LookRotation(body.velocity);
-        }
-        velo = body.velocity;
+
     }
 
-    private void Shoot()
+    private void Shoot(Ray ray)
     {
+        Quaternion _rotation = Quaternion.LookRotation(ray.direction);
         GameObject _go = Instantiate(weapon);
         BasicLaser _weapon = _go.GetComponent<BasicLaser>();
         _weapon.position = body.position;
-        _weapon.rotation = this.transform.rotation;
+        _weapon.rotation = _rotation;
+    }
+
+    private Ray MoveCursor()
+    {
+        
+        Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+
+        Vector3 _spawn_position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+        return _ray;
     }
 }

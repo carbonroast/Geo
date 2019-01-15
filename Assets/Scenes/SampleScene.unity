@@ -348,7 +348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2016825971}
@@ -1058,6 +1058,8 @@ MonoBehaviour:
   speed: 0
   weapon: {fileID: 705635123210391373, guid: c652b1d007b76d342acadc78ce4b7b93, type: 3}
   velo: {x: 0, y: 0, z: 0}
+  cursor: {fileID: 2800000, guid: e43d6f75d1d396e49b526af6d54968be, type: 3}
+  invert: 0
 --- !u!1 &2067156744
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,17 +18,18 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        invert = true;
         body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetCursor();
+        MoveCursor();
         
         if (Input.GetButtonDown("Fire1"))
         {
-            Ray _ray = MoveCursor();
+            Ray _ray = GetCursor();
             Shoot(_ray);
         }
 
@@ -39,18 +40,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void GetCursor()
+    private void MoveCursor()
     {
         inputs.x = Input.GetAxis("Horizontal");
         inputs.z = Input.GetAxis("Vertical");
         cursor_position.x += inputs.x * scale;
         cursor_position.z -= inputs.z * scale;
-        Debug.Log("x: " + inputs.x + " z: " + inputs.z);
+
     }
 
     private void OnGUI()
     {
-        GUI.DrawTexture(new Rect(cursor_position.x - 16, cursor_position.z - 16, 200, 200), cursor);
+        GUI.DrawTexture(new Rect(cursor_position.x - 16, cursor_position.z - 16, 40, 40), cursor);
     }
 
     private void Shoot(Ray ray)
@@ -62,10 +63,10 @@ public class PlayerController : MonoBehaviour
         _weapon.rotation = _rotation;
     }
 
-    private Ray MoveCursor()
+    private Ray GetCursor()
     {
-        
-        Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Ray starts at bottom left, texture starts at the top left
+        Ray _ray = Camera.main.ScreenPointToRay(new Vector2 (cursor_position.x, -cursor_position.z + Screen.height));
         return _ray;
     }
 }

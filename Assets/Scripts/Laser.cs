@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Laser  : Weapon
 {
-    public Vector3 position;
-    public Quaternion rotation;
     public LineRenderer line_render;
 
 
@@ -17,10 +15,6 @@ public class Laser  : Weapon
 
     }
 
-    public virtual void SetRotation()
-    {
-        this.transform.rotation = rotation;
-    }
     public virtual void LineRender()
     {
         line_render = GetComponent<LineRenderer>();

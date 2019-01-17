@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     {
         invert = true;
         body = GetComponent<Rigidbody>();
+        this.gameObject.layer = LayerMask.NameToLayer("Player");
+
     }
 
     // Update is called once per frame
@@ -59,7 +61,6 @@ public class PlayerController : MonoBehaviour
         Quaternion _rotation = Quaternion.LookRotation(ray.direction);
         GameObject _go = Instantiate(weapon);
         Weapon _weapon = _go.GetComponent<Weapon>();
-        Debug.Log(this.transform.position);
         _weapon.position = this.transform.position + new Vector3(0,0,0.01f);
         _weapon.rotation = _rotation;
         _weapon.direction = ray.direction;

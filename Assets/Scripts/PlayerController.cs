@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
         _weapon.position = this.transform.position + new Vector3(0,0,0.01f);
         _weapon.rotation = _rotation;
         _weapon.direction = ray.direction;
+        _weapon.force = 50;
+        _weapon.target_layer = "Enemy";
     }
 
     private Ray GetCursor()

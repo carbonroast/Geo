@@ -10,8 +10,8 @@ public class Arrow : Weapon
         base.Start();
         this.gameObject.transform.Rotate(270, 0, 0);
         damage = 2.0f;
-        this.gameObject.GetComponent<Rigidbody>().AddRelativeForce(direction * 50);
-        Destroy(3.0f);
+        this.gameObject.GetComponent<Rigidbody>().AddRelativeForce(direction * force);
+        Destroy(7.0f);
     }
 
     // Update is called once per frame
@@ -25,13 +25,5 @@ public class Arrow : Weapon
 
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            Creature Enemy = other.GetComponent<Creature>();
-            Enemy.TakeDamage(damage);
-        }
 
-    }
 }

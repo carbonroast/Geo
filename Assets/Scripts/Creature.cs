@@ -5,12 +5,7 @@ using UnityEngine;
 public class Creature : MonoBehaviour
 {
     public float hp;
-    
 
-    public virtual void Attack()
-    {
-
-    }
     public virtual void TakeDamage(float damage)
     {
 

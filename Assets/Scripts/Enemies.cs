@@ -5,12 +5,17 @@ using UnityEngine;
 public class Enemies : Creature
 {
     public float move_speed;
+    public GameObject attack;
 
     [SerializeField]
     private GameObject target;
+    private Quaternion target_roation;
+    private MonsterState state;
+    private Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
+        state = MonsterState.Idle;
         hp = 5.0f;
         this.gameObject.layer = LayerMask.NameToLayer("Enemy");
     }
@@ -22,6 +27,10 @@ public class Enemies : Creature
         {
             FindRandomPlayer();
         }
+        else
+        {
+            Attack();
+        }
     }
 
     private void FixedUpdate()
@@ -29,13 +38,28 @@ public class Enemies : Creature
 
         if(target)
         {
+            state = MonsterState.Turning;
             LookAt();
+
         }
     }
     public virtual void Move()
     {
 
     }
+    public virtual void Attack()
+    {
+        GameObject _attack = Instantiate(attack);
+        Weapon _weapon = _attack.GetComponent<Weapon>();
+        _weapon.position = this.transform.position;
+        _weapon.rotation = target_roation;
+        _weapon.direction = direction;
+        _weapon.force = 60;
+        _weapon.target_layer = "Player";
+    }
+
+
+
     public virtual void FindRandomPlayer()
     {
         GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
@@ -43,10 +67,9 @@ public class Enemies : Creature
     }
     public virtual void LookAt()
     {
-        Vector3 _direction = target.transform.position - this.transform.position;
-
-        Quaternion _target_roation = Quaternion.LookRotation(_direction, Vector3.up);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, _target_roation, Time.deltaTime * 2.0f);
+        direction = target.transform.position - this.transform.position;
+        target_roation = Quaternion.LookRotation(direction, Vector3.up);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, target_roation, Time.deltaTime * 2.0f);
         
     }
 }

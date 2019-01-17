@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public float hp;
     public Vector3 position;
     public Quaternion rotation;
     public Vector3 direction;
     public float damage;
+    public float force;
+    public string target_layer;
 
     public virtual void Start()
     {
@@ -27,5 +30,15 @@ public class Weapon : MonoBehaviour
     public virtual void SetRotation()
     {
         this.transform.rotation = rotation;
+    }
+
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(target_layer))
+        {
+            Creature Enemy = other.GetComponent<Creature>();
+            Enemy.TakeDamage(damage);
+        }
+
     }
 }

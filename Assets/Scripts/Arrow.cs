@@ -10,7 +10,7 @@ public class Arrow : Weapon
         base.Start();
         this.gameObject.transform.Rotate(270, 0, 0);
         this.gameObject.GetComponent<Rigidbody>().AddRelativeForce(direction * force);
-        Destroy(7.0f);
+        Destroy(5.0f);
     }
 
     // Update is called once per frame

@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   attack_start: -3
-  attack_cooldown: 3
+  attack_cooldown: 0.5
   weapon: {fileID: 640350881643456849, guid: 64ac1c4e2a24bfe47a27accc268e8784, type: 3}
   rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2094451545130640529

@@ -11,7 +11,6 @@ public class Player : Creature
     {
         if (Time.time > attack_start + attack_cooldown)
         {
-
             GameObject _go = Instantiate(weapon);
             Weapon _weapon = _go.GetComponent<Weapon>();
             _weapon.position = this.transform.position + new Vector3(0, 0, 0.01f);
@@ -20,5 +19,9 @@ public class Player : Creature
             _weapon.target_layer = "Enemy";
             attack_start = Time.time;
         }
+    }
+    public override void TakeDamage(float damage)
+    {
+        hp -= damage;
     }
 }

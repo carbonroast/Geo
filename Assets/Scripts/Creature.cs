@@ -5,12 +5,14 @@ using UnityEngine;
 public class Creature : MonoBehaviour
 {
     public float hp;
+    public float attack_start;
+    public float attack_cooldown;
+    public GameObject weapon;
 
     public virtual void TakeDamage(float damage)
     {
 
         hp -= damage;
-        Debug.Log("HIT:" + hp + " left");
         if (hp <= 0)
         {
             Death();

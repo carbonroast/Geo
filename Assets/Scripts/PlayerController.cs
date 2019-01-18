@@ -59,13 +59,11 @@ public class PlayerController : MonoBehaviour
     private void Shoot(Ray ray)
     {
         Quaternion _rotation = Quaternion.LookRotation(ray.direction);
-        GameObject _go = Instantiate(weapon);
-        Weapon _weapon = _go.GetComponent<Weapon>();
-        _weapon.position = this.transform.position + new Vector3(0,0,0.01f);
-        _weapon.rotation = _rotation;
-        _weapon.direction = ray.direction;
-        _weapon.force = 50;
-        _weapon.target_layer = "Enemy";
+        Player player = GetComponent<Player>();
+        player.rotation = _rotation;
+        player.ray = ray;
+        player.Attack();
+
     }
 
     private Ray GetCursor()

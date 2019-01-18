@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     public float force;
     public string target_layer;
 
+
     public virtual void Start()
     {
         SetRotation();
@@ -36,8 +37,9 @@ public class Weapon : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(target_layer))
         {
-            Creature Enemy = other.GetComponent<Creature>();
-            Enemy.TakeDamage(damage);
+            Creature creature = other.GetComponent<Creature>();
+            creature.TakeDamage(damage);
+            Debug.Log(creature.GetComponent<Transform>().name + ": " + creature.hp);
         }
 
     }

@@ -30,22 +30,6 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: -8, z: -1}
---- !u!114 &2538831690815637711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640350881643456849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3980182885aafa148b02ce86c0ea7c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 0}
-  direction: {x: 0, y: 0, z: 0}
-  damage: 0
 --- !u!65 &6453500384364742890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,6 +43,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 20, z: 2}
   m_Center: {x: 0, y: 0, z: -1}
+--- !u!114 &2538831690815637711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640350881643456849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3980182885aafa148b02ce86c0ea7c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  direction: {x: 0, y: 0, z: 0}
+  damage: 2
+  force: 50
+  target_layer: 
 --- !u!1001 &640350881643425779
 PrefabInstance:
   m_ObjectHideFlags: 0

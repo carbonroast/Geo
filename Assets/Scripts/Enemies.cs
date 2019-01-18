@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemies : Creature
 {
     public float move_speed;
-    public GameObject attack;
+
 
     [SerializeField]
     private GameObject target;
@@ -16,7 +16,6 @@ public class Enemies : Creature
     void Start()
     {
         state = MonsterState.Idle;
-        hp = 5.0f;
         this.gameObject.layer = LayerMask.NameToLayer("Enemy");
     }
 
@@ -29,7 +28,11 @@ public class Enemies : Creature
         }
         else
         {
-            Attack();
+            if(state == MonsterState.Attacking)
+            {
+                Attack();
+            }
+
         }
     }
 
@@ -38,7 +41,7 @@ public class Enemies : Creature
 
         if(target)
         {
-            state = MonsterState.Turning;
+
             LookAt();
 
         }
@@ -49,13 +52,19 @@ public class Enemies : Creature
     }
     public virtual void Attack()
     {
-        GameObject _attack = Instantiate(attack);
-        Weapon _weapon = _attack.GetComponent<Weapon>();
-        _weapon.position = this.transform.position;
-        _weapon.rotation = target_roation;
-        _weapon.direction = direction;
-        _weapon.force = 60;
-        _weapon.target_layer = "Player";
+        if(Time.time > attack_start + attack_cooldown)
+        {
+            Debug.Log("ATTACKING");
+            GameObject _attack = Instantiate(weapon);
+            Weapon _weapon = _attack.GetComponent<Weapon>();
+            _weapon.position = this.transform.position;
+            _weapon.rotation = target_roation;
+            _weapon.direction = direction;
+            _weapon.force = 60;
+            _weapon.target_layer = "Player";
+            attack_start = Time.time;
+        }
+
     }
 
 
@@ -67,9 +76,19 @@ public class Enemies : Creature
     }
     public virtual void LookAt()
     {
+
         direction = target.transform.position - this.transform.position;
         target_roation = Quaternion.LookRotation(direction, Vector3.up);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, target_roation, Time.deltaTime * 2.0f);
-        
+        float angle = Quaternion.Angle(this.transform.rotation, target_roation);
+        if (angle <= 1.0f)
+        {
+            state = MonsterState.Attacking;
+        }
+        else
+        {
+            state = MonsterState.Turning;
+        }
+
     }
 }

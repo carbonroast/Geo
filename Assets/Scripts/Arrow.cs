@@ -9,7 +9,6 @@ public class Arrow : Weapon
     {
         base.Start();
         this.gameObject.transform.Rotate(270, 0, 0);
-        damage = 2.0f;
         this.gameObject.GetComponent<Rigidbody>().AddRelativeForce(direction * force);
         Destroy(7.0f);
     }
